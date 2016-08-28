@@ -8,11 +8,18 @@ public class PlanetController : MonoBehaviour {
 
 	void Start () {
 		Debug.Log("Started " + this.name);
+	}
+
+	void OnEnable() {
+		Debug.Log("Enabled " + this.name);
 		OrientTowardsReference();
 	}
 
 	void Update () {
 		OrientTowardsReference();
+		if (GvrViewer.Instance.Tilted) {
+			GvrViewer.Instance.VRModeEnabled = false;
+		}
 		if (GvrViewer.Instance.Triggered) {
 			Debug.Log("Triggered " + this.name);
 			this.gameObject.SetActive(false);
@@ -23,7 +30,7 @@ public class PlanetController : MonoBehaviour {
 	/**
 	 * Rotate the planet to face the reference point, which makes the planet rotate relative to the camera
 	 */
-	public void OrientTowardsReference() {
+	private void OrientTowardsReference() {
 		this.transform.LookAt(referencePoint);
 	}
 }

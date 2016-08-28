@@ -5,6 +5,7 @@ public class PlanetController : MonoBehaviour {
 
 	public Transform referencePoint;
 	public GameObject nextPlanet;
+	public GameObject vrButton;
 
 	void Start () {
 		Debug.Log("Started " + this.name);
@@ -19,6 +20,7 @@ public class PlanetController : MonoBehaviour {
 		OrientTowardsReference();
 		if (GvrViewer.Instance.Tilted) {
 			GvrViewer.Instance.VRModeEnabled = false;
+			vrButton.SetActive(true);
 		}
 		if (GvrViewer.Instance.Triggered) {
 			Debug.Log("Triggered " + this.name);

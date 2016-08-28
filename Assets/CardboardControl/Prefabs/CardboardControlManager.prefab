@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &110264
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 465842}
+  - 114: {fileID: 11457768}
+  - 114: {fileID: 11455312}
+  - 114: {fileID: 11474088}
+  - 114: {fileID: 11481902}
+  - 114: {fileID: 11447888}
+  m_Layer: 0
+  m_Name: CardboardControlManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &465842
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110264}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11447888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e96b5b0d55c6dd48846315b5654102b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 0.6
+  startHidden: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967291
+  prefab: {fileID: 171526, guid: 60270cf52a5e94998a5a335989159738, type: 2}
+--- !u!114 &11455312
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d94ee68fb67e4659b4ca5bbc592f683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: Infinity
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967291
+  useEventCooldowns: 0
+  vibrateOnChange: 0
+  vibrateOnStare: 0
+  stareTimeThreshold: 2
+--- !u!114 &11457768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3656691e3c91d4acd8e3222098ce7eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger: {fileID: 11474088}
+  gaze: {fileID: 11455312}
+  box: {fileID: 11481902}
+  reticle: {fileID: 0}
+  eventCooldown: 0.2
+--- !u!114 &11474088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff5c5b6d52fa37e48991bdffd4b620e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSpeedThreshold: 0.4
+  useEventCooldowns: 1
+  vibrateOnDown: 0
+  vibrateOnUp: 0
+  vibrateOnClick: 1
+  useMagnet: 1
+  useTouch: 1
+  triggerKey: 32
+  printDebugInfo: 0
+--- !u!114 &11481902
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaca247cf68604fd6aa483cfaba60152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useEventCooldowns: 1
+  vibrateOnOrientationTilt: 0
+  tiltKey: 9
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: pointerPrefab
+      value: 
+      objectReference: {fileID: 178078, guid: 2b2a0223055544e4f8d0330728f3ebd3, type: 2}
+    - target: {fileID: 0}
+      propertyPath: raycastIgnoreLayer.m_Bits
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: startHidden
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: reticlePrefab
+      value: 
+      objectReference: {fileID: 100896, guid: 4e70f128821fbd44397a839b4080d103, type: 2}
+    - target: {fileID: 0}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 171526, guid: 60270cf52a5e94998a5a335989159738, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 110264}
+  m_IsPrefabParent: 1

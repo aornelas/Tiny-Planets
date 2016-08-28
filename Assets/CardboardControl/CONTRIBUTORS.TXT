@@ -1,0 +1,11 @@
+Andrew Whyte, Secret Ingredient Games
+  http://www.andrewnoske.com/wiki/Unity_-_Detecting_Google_Cardboard_Click
+  MIT-licensed base code for detecting magnet input
+
+Justin Scott
+  https://github.com/JScott
+  Repository owner
+
+Rukanishino
+  https://github.com/rukanishino
+  Contributed code for the orientation tilt controls

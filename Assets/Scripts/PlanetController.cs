@@ -3,22 +3,14 @@ using System.Collections;
 
 public class PlanetController : MonoBehaviour {
 
-	public Transform referencePoint;
+	public PlayerController player;
 	public GameObject nextPlanet;
 	public GameObject vrButton;
 	public float speed = 0.1f;
 
-	void Start() {
-	}
-
-	void OnEnable() {
-		OrientTowardsReference();
-	}
-
 	void Update()
 	{
 		HandleTouch();
-		OrientTowardsReference();
 		if (GvrViewer.Instance.Tilted)
 		{
 			DisableVR();
@@ -26,18 +18,18 @@ public class PlanetController : MonoBehaviour {
 		if (GvrViewer.Instance.Triggered)
 		{
 			NextPlanet();
+			ResetPlayer();
 		}
-	}
-
-	private void OrientTowardsReference()
-	{
-		this.transform.LookAt(referencePoint);
 	}
 
 	private void DisableVR()
 	{
 		GvrViewer.Instance.VRModeEnabled = false;
 		vrButton.SetActive(true);
+	}
+
+	private void ResetPlayer() {
+		player.resetPlayer();
 	}
 
 	private void NextPlanet()

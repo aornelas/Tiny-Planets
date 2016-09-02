@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	public Rigidbody planet;
+
 	private Vector3 initialPosition;
 
 	void Start()
@@ -18,6 +19,23 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	public void ResetPlayer()
+	{
+		transform.localPosition = initialPosition;
+	}
+
+	void OnTriggerEnter(Collider other) 
+	{
+//		if (other.gameObject.CompareTag("Pick Up")) 
+//		{
+			other.gameObject.SetActive(false);
+			GetComponent<AudioSource>().enabled = true;
+			GetComponent<AudioSource>().Play();
+//			count++;
+//			setCountText();
+//		}
+	}
+
 	private void PrintVelocity()
 	{
 		Vector3 v = GetComponent<Rigidbody>().velocity;
@@ -30,8 +48,4 @@ public class PlayerController : MonoBehaviour {
 		return Mathf.Round(f);
 	}
 
-	public void ResetPlayer()
-	{
-		transform.localPosition = initialPosition;
-	}
 }

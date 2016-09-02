@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ObjectOrienter : MonoBehaviour {
+public class PlanetOrienter : MonoBehaviour {
 
 	public Transform referencePoint;
 

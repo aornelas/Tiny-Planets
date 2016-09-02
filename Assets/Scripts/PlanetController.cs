@@ -14,10 +14,10 @@ public class PlanetController : MonoBehaviour {
 		if (GvrViewer.Instance.Tilted) {
 			DisableVR ();
 		}
-		if (GvrViewer.Instance.Triggered) {
-			NextPlanet ();
-			ResetPlayer ();
-		}
+//		if (GvrViewer.Instance.Triggered) {
+//			NextPlanet ();
+//			ResetPlayer ();
+//		}
 	}
 
 	private void DisableVR()

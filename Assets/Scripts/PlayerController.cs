@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
+	public Rigidbody planet;
 	private Vector3 initialPosition;
 
 	void Start()
@@ -12,16 +13,25 @@ public class PlayerController : MonoBehaviour {
 
 	void Update()
 	{
+		if (Input.GetKey(KeyCode.V)) {
+			PrintVelocity();
+		}
 	}
 
-	public void resetPlayer() {
-		transform.localPosition = initialPosition;
-	}
-
-	private void OrientPlayer()
+	private void PrintVelocity()
 	{
-		Transform myTransform = transform;
-		Quaternion headDirection = GvrViewer.Instance.HeadPose.Orientation;
-		transform.LookAt(headDirection * Vector3.forward);
+		Vector3 v = GetComponent<Rigidbody>().velocity;
+		Vector3 vP = planet.velocity;
+		Debug.Log(string.Format("({0} , {1}, {2})", Round(v.x - vP.x), Round(v.y - vP.y), Round(v.z - vP.z)));
+	}
+
+	private float Round(float f)
+	{
+		return Mathf.Round(f);
+	}
+
+	public void ResetPlayer()
+	{
+		transform.localPosition = initialPosition;
 	}
 }

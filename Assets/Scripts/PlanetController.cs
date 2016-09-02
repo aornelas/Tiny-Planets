@@ -8,17 +8,15 @@ public class PlanetController : MonoBehaviour {
 	public GameObject vrButton;
 	public float speed = 0.1f;
 
-	void Update()
+	void Update ()
 	{
-		HandleTouch();
-		if (GvrViewer.Instance.Tilted)
-		{
-			DisableVR();
+		HandleTouch ();
+		if (GvrViewer.Instance.Tilted) {
+			DisableVR ();
 		}
-		if (GvrViewer.Instance.Triggered)
-		{
-			NextPlanet();
-			ResetPlayer();
+		if (GvrViewer.Instance.Triggered) {
+			NextPlanet ();
+			ResetPlayer ();
 		}
 	}
 
@@ -29,7 +27,7 @@ public class PlanetController : MonoBehaviour {
 	}
 
 	private void ResetPlayer() {
-		player.resetPlayer();
+		player.ResetPlayer();
 	}
 
 	private void NextPlanet()

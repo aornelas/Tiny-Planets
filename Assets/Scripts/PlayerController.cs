@@ -25,15 +25,10 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) 
-	{
-//		if (other.gameObject.CompareTag("Pick Up")) 
-//		{
-			other.gameObject.SetActive(false);
-			GetComponent<AudioSource>().enabled = true;
-			GetComponent<AudioSource>().Play();
-//			count++;
-//			setCountText();
-//		}
+	{		
+		other.gameObject.GetComponent<AudioSource>().Play();
+		other.transform.GetChild(0).gameObject.SetActive(false);
+		other.enabled = false;
 	}
 
 	private void PrintVelocity()

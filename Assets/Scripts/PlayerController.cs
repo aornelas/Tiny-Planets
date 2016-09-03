@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 	public Rigidbody planet;
 
 	private Vector3 initialPosition;
+	private GameObject pickUpFX;
 
 	void Start()
 	{
@@ -27,8 +28,16 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerEnter(Collider other) 
 	{		
 		other.gameObject.GetComponent<AudioSource>().Play();
-		other.transform.GetChild(0).gameObject.SetActive(false);
+		other.transform.FindChild("Diamond").gameObject.SetActive(false);
+		other.transform.FindChild("MagicEffect1").GetComponent<ParticleSystem>().Play();
+		pickUpFX = other.transform.FindChild("MagicEffect1").gameObject;
+		Invoke("DisablePickUpFx", 1);
 		other.enabled = false;
+	}
+
+	private void DisablePickUpFx()
+	{
+		pickUpFX.SetActive(false);
 	}
 
 	private void PrintVelocity()

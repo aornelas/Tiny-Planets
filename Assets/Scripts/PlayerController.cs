@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour {
 	{		
 		other.gameObject.GetComponent<AudioSource>().Play();
 		other.transform.FindChild("Diamond").gameObject.SetActive(false);
+		other.transform.FindChild("GodRays").gameObject.SetActive(false);
 		other.transform.FindChild("MagicEffect1").GetComponent<ParticleSystem>().Play();
 		pickUpFX = other.transform.FindChild("MagicEffect1").gameObject;
 		Invoke("DisablePickUpFx", 1);

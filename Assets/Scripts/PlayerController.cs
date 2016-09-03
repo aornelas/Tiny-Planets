@@ -6,18 +6,10 @@ public class PlayerController : MonoBehaviour {
 	public Rigidbody planet;
 
 	private Vector3 initialPosition;
-	private GameObject pickUpFX;
 
 	void Start()
 	{
 		initialPosition = transform.localPosition;
-	}
-
-	void Update()
-	{
-		if (Input.GetKey(KeyCode.V)) {
-			PrintVelocity();
-		}
 	}
 
 	public void ResetPlayer()
@@ -27,30 +19,7 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) 
 	{		
-		other.gameObject.GetComponent<AudioSource>().Play();
-		other.transform.FindChild("Diamond").gameObject.SetActive(false);
-		other.transform.FindChild("GodRays").gameObject.SetActive(false);
-		other.transform.FindChild("MagicEffect1").GetComponent<ParticleSystem>().Play();
-		pickUpFX = other.transform.FindChild("MagicEffect1").gameObject;
-		Invoke("DisablePickUpFx", 1);
-		other.enabled = false;
-	}
-
-	private void DisablePickUpFx()
-	{
-		pickUpFX.SetActive(false);
-	}
-
-	private void PrintVelocity()
-	{
-		Vector3 v = GetComponent<Rigidbody>().velocity;
-		Vector3 vP = planet.velocity;
-		Debug.Log(string.Format("({0} , {1}, {2})", Round(v.x - vP.x), Round(v.y - vP.y), Round(v.z - vP.z)));
-	}
-
-	private float Round(float f)
-	{
-		return Mathf.Round(f);
+		other.gameObject.GetComponent<CollectibleController>().PickUp();
 	}
 
 }

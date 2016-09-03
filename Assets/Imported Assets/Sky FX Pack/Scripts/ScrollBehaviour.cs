@@ -14,7 +14,7 @@ public class ScrollBehaviour : MonoBehaviour
         uvOffset += (uvAnimationRate * Time.deltaTime);
         if (GetComponent<Renderer>().enabled)
         {
-//            GetComponent<Renderer>().materials[materialIndex].SetTextureOffset(textureName, uvOffset);
+            GetComponent<Renderer>().materials[materialIndex].SetTextureOffset(textureName, uvOffset);
         }
     }
 }

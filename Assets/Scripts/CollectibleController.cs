@@ -14,18 +14,18 @@ public class CollectibleController : MonoBehaviour {
 
 	void Update()
 	{
-		transform.Rotate (new Vector3(0, 30, 0) * speed * Time.deltaTime);
+		transform.FindChild("Diamond").transform.Rotate (new Vector3(0, 30, 0) * speed * Time.deltaTime);
 		// TODO make slowly bounce
 	}
 
 	public void PickUp()
 	{
 		GetComponent<AudioSource>().Play();
+		GetComponent<SphereCollider>().enabled = false;
 		transform.FindChild("Diamond").gameObject.SetActive(false);
 		transform.FindChild("GodRays").gameObject.SetActive(false);
 		transform.FindChild("MagicEffect1").GetComponent<ParticleSystem>().Play();
 		Invoke("DisablePickUpFx", 1);
-		this.enabled = false;
 	}
 
 	private void DisablePickUpFx()

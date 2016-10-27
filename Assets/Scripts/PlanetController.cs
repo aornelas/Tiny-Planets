@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlanetController : MonoBehaviour {
 
-	public PlayerController player;
 	public GameObject portal;
 	public GameObject nextPlanet;
 	public GameObject vrButton;
@@ -20,21 +19,12 @@ public class PlanetController : MonoBehaviour {
 		if (GvrViewer.Instance.Tilted) {
 			DisableVR();
 		}
-		if (GvrViewer.Instance.Triggered) {
-//			NextPlanet();
-			// TODO: Move to PlayerController
-			ResetPlayer();
-		}
 	}
 
 	private void DisableVR()
 	{
 		GvrViewer.Instance.VRModeEnabled = false;
 		vrButton.SetActive(true);
-	}
-
-	private void ResetPlayer() {
-		player.ResetPlayer();
 	}
 
 	public void NextPlanet()

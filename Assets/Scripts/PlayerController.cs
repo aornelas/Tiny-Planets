@@ -13,6 +13,13 @@ public class PlayerController : MonoBehaviour {
 		initialPosition = transform.localPosition;
 	}
 
+	void Update()
+	{
+		if (GvrViewer.Instance.Triggered) {
+			ResetPlayer();
+		}
+	}
+
 	public void ResetPlayer ()
 	{
 		transform.localPosition = initialPosition;

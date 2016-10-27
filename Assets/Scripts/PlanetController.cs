@@ -4,19 +4,26 @@ using System.Collections;
 public class PlanetController : MonoBehaviour {
 
 	public PlayerController player;
+	public GameObject portal;
 	public GameObject nextPlanet;
 	public GameObject vrButton;
 	public float speed = 0.1f;
 
-	void Update ()
+	void Start()
 	{
-		HandleTouch ();
+		gameObject.GetComponentInParent<AudioSource>().Play();
+	}
+
+	void Update()
+	{
+		HandleTouch();
 		if (GvrViewer.Instance.Tilted) {
-			DisableVR ();
+			DisableVR();
 		}
 		if (GvrViewer.Instance.Triggered) {
-//			NextPlanet ();
-			ResetPlayer ();
+//			NextPlanet();
+			// TODO: Move to PlayerController
+			ResetPlayer();
 		}
 	}
 
@@ -30,7 +37,7 @@ public class PlanetController : MonoBehaviour {
 		player.ResetPlayer();
 	}
 
-	private void NextPlanet()
+	public void NextPlanet()
 	{
 		this.gameObject.SetActive(false);
 		nextPlanet.SetActive(true);

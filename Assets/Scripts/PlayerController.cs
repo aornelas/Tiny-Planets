@@ -3,23 +3,61 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
-	public Rigidbody planet;
-
 	private Vector3 initialPosition;
+
+	// TODO: Move to GameController
+	public GameObject currentPlanet;
+	private PlanetController planetController;
+	private int collectedCount;
+	private bool portalOpened;
+
 
 	void Start()
 	{
 		initialPosition = transform.localPosition;
+		ResetPlanet();
 	}
 
-	public void ResetPlayer()
+	void Update () {
+		if (collectedCount >= 3 && !portalOpened)
+		{
+			Invoke("OpenPortal", 0.25f);
+			portalOpened = true;
+		}
+	}
+
+	public void ResetPlayer ()
 	{
 		transform.localPosition = initialPosition;
 	}
 
 	void OnTriggerEnter(Collider other) 
 	{		
-		other.gameObject.GetComponent<CollectibleController>().PickUp();
+		if (other.tag == "Collectible")
+		{
+			other.gameObject.GetComponent<CollectibleController>().PickUp();
+			collectedCount++;
+		}
+
+		if (other.tag == "Portal")
+		{
+			planetController.NextPlanet();
+			currentPlanet = planetController.nextPlanet;
+			ResetPlanet();
+		}
+	}
+
+	private void OpenPortal()
+	{
+		planetController.portal.SetActive(true);
+		GetComponent<AudioSource>().Play();
+	}
+
+	private void ResetPlanet()
+	{
+		collectedCount = 0;
+		portalOpened = false;
+		planetController = currentPlanet.GetComponent<PlanetController>();
 	}
 
 }

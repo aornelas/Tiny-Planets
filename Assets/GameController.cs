@@ -33,6 +33,7 @@ public class GameController : MonoBehaviour {
 		planetController.NextPlanet();
 		currentPlanet = planetController.nextPlanet;
 		ResetPlanet();
+		ResetPlayer();
 	}
 
 	private void ResetPlanet()
@@ -40,6 +41,11 @@ public class GameController : MonoBehaviour {
 		collectedCount = 0;
 		portalOpened = false;
 		planetController = currentPlanet.GetComponent<PlanetController>();
+	}
+
+	private void ResetPlayer()
+	{
+		gameObject.GetComponentsInChildren<PlayerController>()[0].ResetPlayer();
 	}
 
 	private void OpenPortal()

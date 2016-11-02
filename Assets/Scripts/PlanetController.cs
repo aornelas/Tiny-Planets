@@ -29,6 +29,7 @@ public class PlanetController : MonoBehaviour {
 
 	public void NextPlanet()
 	{
+		
 		this.gameObject.SetActive(false);
 		nextPlanet.SetActive(true);
 	}

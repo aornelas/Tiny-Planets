@@ -4,18 +4,21 @@ using System.Collections;
 public class GameController : MonoBehaviour {
 
 	public GameObject currentPlanet;
+	private int collectiblesNeeded = 3;
 	private PlanetController planetController;
 	private int collectedCount;
 	private bool portalOpened;
+	private FauxGravityAttractor gravityAttractor;
 
 	void Start()
 	{
 		ResetPlanet();
+		gravityAttractor = gameObject.GetComponentsInChildren<FauxGravityAttractor>()[0];
 	}
 
 	void Update()
 	{
-		if (collectedCount >= 3 && !portalOpened)
+		if (collectedCount >= collectiblesNeeded && !portalOpened)
 		{
 			Invoke("OpenPortal", 0.25f);
 			portalOpened = true;
@@ -33,7 +36,8 @@ public class GameController : MonoBehaviour {
 		planetController.NextPlanet();
 		currentPlanet = planetController.nextPlanet;
 		ResetPlanet();
-		ResetPlayer();
+		FlipGravity();
+		Invoke("ResetPlayer", 0.25f);
 	}
 
 	private void ResetPlanet()
@@ -45,7 +49,13 @@ public class GameController : MonoBehaviour {
 
 	private void ResetPlayer()
 	{
+		FlipGravity();
 		gameObject.GetComponentsInChildren<PlayerController>()[0].ResetPlayer();
+	}
+
+	private void FlipGravity()
+	{
+		gravityAttractor.gravity = gravityAttractor.gravity * -1;
 	}
 
 	private void OpenPortal()

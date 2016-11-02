@@ -8,12 +8,12 @@ public class GameController : MonoBehaviour {
 	private PlanetController planetController;
 	private int collectedCount;
 	private bool portalOpened;
-	private FauxGravityAttractor gravityAttractor;
+	private GravityAttractor gravityAttractor;
 
 	void Start()
 	{
 		ResetPlanet();
-		gravityAttractor = gameObject.GetComponentsInChildren<FauxGravityAttractor>()[0];
+		gravityAttractor = gameObject.GetComponentsInChildren<GravityAttractor>()[0];
 	}
 
 	void Update()

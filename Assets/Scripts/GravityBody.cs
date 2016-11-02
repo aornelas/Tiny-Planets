@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FauxGravityBody : MonoBehaviour {
+public class GravityBody : MonoBehaviour {
 
-	public FauxGravityAttractor attractor;
+	public GravityAttractor attractor;
 
 	void Update()
 	{

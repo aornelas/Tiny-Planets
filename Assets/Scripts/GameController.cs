@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour {
 	private int collectedCount;
 	private bool portalOpened;
 	private bool teleporting;
+	private bool arriving;
+	private Vector3 planetTarget;
 	private bool invokedSwapPlanet;
 	private GravityAttractor gravityAttractor;
 	private float teleportSpeed = 2.5f;
@@ -35,6 +37,14 @@ public class GameController : MonoBehaviour {
 				invokedSwapPlanet = true;
 			}
 		}
+		if (arriving)
+		{
+			currentPlanet.transform.position = Vector3.MoveTowards(currentPlanet.transform.position, planetTarget, teleportSpeed * 35 * Time.deltaTime);
+			if (currentPlanet.transform.position == planetTarget)
+			{
+				arriving = false;
+			}
+		}
 	}
 
 	public void PickUpCollectible(GameObject collectible) 
@@ -55,7 +65,10 @@ public class GameController : MonoBehaviour {
 	{
 		teleporting = false;
 		planetController.NextPlanet();
-		currentPlanet = planetController.nextPlanet;	
+		currentPlanet = planetController.nextPlanet;
+		planetTarget = currentPlanet.transform.position;
+		currentPlanet.transform.Translate(new Vector3(10, 10, 10));	
+		arriving = true;
 		ResetPlanet();
 	}
 

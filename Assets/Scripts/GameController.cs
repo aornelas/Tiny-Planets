@@ -8,7 +8,10 @@ public class GameController : MonoBehaviour {
 	private PlanetController planetController;
 	private int collectedCount;
 	private bool portalOpened;
+	private bool teleporting;
+	private bool invokedSwapPlanet;
 	private GravityAttractor gravityAttractor;
+	private float teleportSpeed = 2.5f;
 
 	void Start()
 	{
@@ -23,6 +26,15 @@ public class GameController : MonoBehaviour {
 			Invoke("OpenPortal", 0.25f);
 			portalOpened = true;
 		}
+		if (teleporting)
+		{
+			currentPlanet.transform.Translate(new Vector3(-50, -50, -50) * teleportSpeed * Time.deltaTime);
+			if (!invokedSwapPlanet)
+			{
+				Invoke("SwapPlanet", 1.0f);
+				invokedSwapPlanet = true;
+			}
+		}
 	}
 
 	public void PickUpCollectible(GameObject collectible) 
@@ -33,24 +45,26 @@ public class GameController : MonoBehaviour {
 
 	public void TeleportToNextPlanet()
 	{
-		planetController.NextPlanet();
-		currentPlanet = planetController.nextPlanet;
-		ResetPlanet();
+		teleporting = true;
 		FlipGravity();
-		Invoke("ResetPlayer", 0.25f);
+		gameObject.transform.FindChild("Planets").GetComponent<AudioSource>().Play();
+		Invoke("FlipGravity", 0.5f);
+	}
+
+	private void SwapPlanet()
+	{
+		teleporting = false;
+		planetController.NextPlanet();
+		currentPlanet = planetController.nextPlanet;	
+		ResetPlanet();
 	}
 
 	private void ResetPlanet()
 	{
 		collectedCount = 0;
 		portalOpened = false;
+		invokedSwapPlanet = false;
 		planetController = currentPlanet.GetComponent<PlanetController>();
-	}
-
-	private void ResetPlayer()
-	{
-		FlipGravity();
-		gameObject.GetComponentsInChildren<PlayerController>()[0].ResetPlayer();
 	}
 
 	private void FlipGravity()

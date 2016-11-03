@@ -8,11 +8,6 @@ public class PlanetController : MonoBehaviour {
 	public GameObject vrButton;
 	public float speed = 0.1f;
 
-	void Start()
-	{
-		gameObject.GetComponentInParent<AudioSource>().Play();
-	}
-
 	void Update()
 	{
 		HandleTouch();

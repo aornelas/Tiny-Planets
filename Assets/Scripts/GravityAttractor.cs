@@ -12,6 +12,7 @@ public class GravityAttractor : MonoBehaviour {
 		body.GetComponent<Rigidbody>().AddForce(gravityUp * gravity);
 
 		Quaternion targetRotation = Quaternion.FromToRotation(bodyUp, gravityUp) * body.rotation;
-		body.rotation = Quaternion.Slerp(body.rotation, targetRotation, 50 * Time.deltaTime);
+		// TODO: Break up so Tiny Planets and Black Hole can both use this class
+//		body.rotation = Quaternion.Slerp(body.rotation, targetRotation, 50 * Time.deltaTime);
 	}
 }

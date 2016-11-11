@@ -19,6 +19,7 @@ public class PlanetSpawner : MonoBehaviour {
 	{
 		if (GvrViewer.Instance.Triggered)
 		{
+			GetComponent<AudioSource>().Play();
 			GameObject planet = (GameObject) Instantiate(planetPrefab, transform.position, new Quaternion());
 			planet.GetComponent<GravityBody>().attractor = blackHole;
 //			GravityAttractor[] attractors = new GravityAttractor[2];

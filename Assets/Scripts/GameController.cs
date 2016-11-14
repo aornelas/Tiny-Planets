@@ -4,13 +4,14 @@ using System.Collections;
 public class GameController : MonoBehaviour {
 
 	public GameObject currentPlanet;
+	public GameObject planetTarget;
+
 	private int collectiblesNeeded = 3;
 	private PlanetController planetController;
 	private int collectedCount;
 	private bool portalOpened;
 	private bool teleporting;
 	private bool arriving;
-	private Vector3 planetTarget;
 	private bool invokedSwapPlanet;
 	private GravityAttractor gravityAttractor;
 	private float teleportSpeed = 2.5f;
@@ -39,8 +40,9 @@ public class GameController : MonoBehaviour {
 		}
 		if (arriving)
 		{
-			currentPlanet.transform.position = Vector3.MoveTowards(currentPlanet.transform.position, planetTarget, teleportSpeed * 35 * Time.deltaTime);
-			if (currentPlanet.transform.position == planetTarget)
+			Vector3 planetTargetPosition = planetTarget.transform.position;
+			currentPlanet.transform.position = Vector3.MoveTowards(currentPlanet.transform.position, planetTargetPosition, teleportSpeed * 35 * Time.deltaTime);
+			if (currentPlanet.transform.position == planetTargetPosition)
 			{
 				arriving = false;
 			}
@@ -66,7 +68,6 @@ public class GameController : MonoBehaviour {
 		teleporting = false;
 		planetController.NextPlanet();
 		currentPlanet = planetController.nextPlanet;
-		planetTarget = currentPlanet.transform.position;
 		currentPlanet.transform.Translate(new Vector3(10, 10, 10));	
 		arriving = true;
 		ResetPlanet();

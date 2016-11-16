@@ -8,21 +8,12 @@ public class PlanetController : MonoBehaviour {
 	public GameObject vrButton;
 	public float speed = 0.1f;
 
-	void Update()
+	void Update ()
 	{
 		HandleTouch();
-		if (GvrViewer.Instance.Tilted) {
-			DisableVR();
-		}
 	}
 
-	private void DisableVR()
-	{
-		GvrViewer.Instance.VRModeEnabled = false;
-		vrButton.SetActive(true);
-	}
-
-	public void NextPlanet()
+	public void NextPlanet ()
 	{
 		
 		this.gameObject.SetActive(false);

@@ -4,19 +4,39 @@ using System.Collections;
 public class PlanetOrienter : MonoBehaviour {
 
 	public Transform referencePoint;
+	private bool orienting;
 
-	void Update()
+	void Start()
+	{
+		orienting = true;
+	}
+
+	void Update ()
 	{
 		OrientTowardsReference();
 	}
 
-	void OnEnable()
+	// TODO: do we really need this one?
+	void OnEnable ()
 	{
-		OrientTowardsReference();
+//		OrientTowardsReference();
 	}
 
-	private void OrientTowardsReference()
+	public void EnableOrienting ()
 	{
-		this.transform.LookAt(referencePoint);
+		orienting = true;
+	}
+
+	public  void DisableOrienting ()
+	{
+		orienting = false;
+	}
+
+	private void OrientTowardsReference ()
+	{
+		if (orienting)
+		{
+			this.transform.LookAt(referencePoint);
+		}
 	}
 }

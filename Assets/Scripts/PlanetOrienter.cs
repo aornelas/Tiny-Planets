@@ -3,7 +3,8 @@ using System.Collections;
 
 public class PlanetOrienter : MonoBehaviour {
 
-	public Transform referencePoint;
+	public GameObject referencePoint;
+	public Transform cameraFront;
 	private bool orienting;
 
 	void Start()
@@ -16,15 +17,11 @@ public class PlanetOrienter : MonoBehaviour {
 		OrientTowardsReference();
 	}
 
-	// TODO: do we really need this one?
-	void OnEnable ()
-	{
-//		OrientTowardsReference();
-	}
-
 	public void EnableOrienting ()
 	{
 		orienting = true;
+		referencePoint.transform.position = cameraFront.transform.position;
+		referencePoint.transform.rotation = cameraFront.transform.rotation;
 	}
 
 	public  void DisableOrienting ()
@@ -36,7 +33,7 @@ public class PlanetOrienter : MonoBehaviour {
 	{
 		if (orienting)
 		{
-			this.transform.LookAt(referencePoint);
+			this.transform.LookAt(referencePoint.transform, referencePoint.transform.up);
 		}
 	}
 }

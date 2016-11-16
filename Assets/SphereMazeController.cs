@@ -7,11 +7,10 @@ public class SphereMazeController : MonoBehaviour {
 
 	void Update()
 	{
-//		if (GvrViewer.Instance.Triggered) {
 		if (Input.GetMouseButton(0)) {
 			orienter.DisableOrienting();
-		} else {
-		// Fix
+		}
+		if (Input.GetMouseButtonUp(0)){
 			orienter.EnableOrienting();
 		}
 	}

@@ -9,8 +9,8 @@ public class GoogleCardboardController : MonoBehaviour {
 
 	void Update ()
 	{
-		this.gameObject.SetActive(!GvrViewer.Instance.VRModeEnabled);
-		if (GvrViewer.Instance.Tilted || GvrViewer.Instance.BackButtonPressed)
+		this.gameObject.transform.Find("Canvas/cardboard button").gameObject.SetActive(!GvrViewer.Instance.VRModeEnabled);
+		if (GvrViewer.Instance.Tilted)
 		{
 			DisableVR();
 		}

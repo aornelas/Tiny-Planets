@@ -10,7 +10,6 @@ public class PlatformController : MonoBehaviour {
 	{		
 		if (other.tag == "Ball")
 		{
-			// TODO: Delegate sounds to SphereMazeController so it can play once per platform change
 			GetComponent<AudioSource>().pitch = 1 + (platformIndex * pitchIncrease);
 			GetComponent<AudioSource>().Play();
 		}

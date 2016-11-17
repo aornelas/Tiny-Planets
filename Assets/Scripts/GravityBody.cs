@@ -3,18 +3,16 @@ using System.Collections;
 
 public class GravityBody : MonoBehaviour {
 
-	public GravityAttractor attractor;
-//	public GravityAttractor[] attractors;
+//	public GravityAttractor attractor;
+	public GravityAttractor[] attractors;
 
-	void Update()
+	void Update ()
 	{
-//		if (attractors != null)
-//			{
-//			foreach (GravityAttractor a in attractors)
-//			{
-//				a.Attract(transform);
-//			}
-//		}
-		attractor.Attract(transform);
+		if (attractors != null) {
+			foreach (GravityAttractor a in attractors) {
+				a.Attract (transform);
+			}
+		}
+//		attractor.Attract(transform);
 	}
 }
